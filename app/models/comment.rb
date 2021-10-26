@@ -1,4 +1,9 @@
+# class Comment < ApplicationRecord
+#   belongs_to :author, class_name: 'User'
+#   belongs_to :post
+# end
+
 class Comment < ApplicationRecord
-  belongs_to :user, class_name: 'User', foreign_key: 'author_id', primary_key: 'author_id'
+  belongs_to :user
   belongs_to :post
 end
