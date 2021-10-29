@@ -17,4 +17,31 @@ class Post < ApplicationRecord
   has_many :likes
   # these gets all the users that liked a specific post
   has_many :users, through: :likes
+  # enforce presence of user on specific post creation
+  validates_associated :user
+  # select all post other than the first post
+  scope :not_id_of_one, -> { where('id != 1') }
+  # get all posts and order by created_at
+  scope :by_creation, ->(post_id) { where('id = ?', post_id).order('created_at DESC') }
+
+  def self.update_post_counter(id)
+    post = Post.find(id)
+    user = post.user
+    user.update_column('posts_counter', user.posts_counter + 1)
+  end
+
+  def update_post_counter
+    user.update_column('posts_counter', user.posts_counter + 1)
+  end
+
+  # class method to get top 5 comments for a given post
+  def self.five_most_recent_comments(post_id)
+    post = Post.find(post_id)
+    post.comments.order('created_at DESC').limit(5)
+  end
+
+  # instance method to get top 5 comments for a given post
+  def five_most_recent_comments
+    comments.order('created_at DESC').limit(5)
+  end
 end
