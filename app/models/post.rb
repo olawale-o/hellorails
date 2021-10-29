@@ -44,4 +44,11 @@ class Post < ApplicationRecord
   def five_most_recent_comments
     comments.order('created_at DESC').limit(5)
   end
+
+  # auto update comments_counter for existing post
+  # def self.update_comments_counter(post_id)
+  #   post = Post.find(post_id)
+  #   total_comments = post.comments.size
+  #   post.update_column('comments_counter', total_comments)
+  # end
 end
