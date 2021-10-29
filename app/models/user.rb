@@ -15,6 +15,19 @@ class User < ApplicationRecord
   has_many :commented_posts, through: :comments, source: :user, class_name: 'Comment'
   # these gets all the likes of a specific user
   has_many :likes, class_name: 'Like'
-  # hese gets all the posts liked by a specifc user
+  # these gets all the posts liked by a specifc user
   has_many :posts, through: :likes
+
+  # These gets all the recent psots of a user
+  scope :top_three_posts_of_user, ->(id, total) { find(id).created_posts.order('created_at DESC').limit(total) }
+
+  # class method to get top three posts a given user
+  def self.top_three_posts(args)
+    User.find_by(args).created_posts.order('created_at DESC').limit(3)
+  end
+
+  # instance method to get top three posts for a given user
+  def top_three_posts
+    created_posts.order('created_at DESC').limit(3)
+  end
 end
