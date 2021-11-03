@@ -46,8 +46,8 @@ class Post < ApplicationRecord
   end
 
   # instance method to get top 5 comments for a given post
-  def five_most_recent_comments
-    comments.order('created_at DESC').limit(5)
+  def five_most_recent_comments(limit = 5)
+    comments.order(created_at: :desc).limit(limit)
   end
 
   # auto update comments_counter for existing post

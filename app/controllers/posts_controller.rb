@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.top_most_recent_posts
+    @posts = @user.top_three_posts
   end
 
   def show
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.new(post_params)
-    current_user.posts << new_post
+    current_user.created_posts << new_post
     new_post.update_post_counter
     if new_post.save
       flash[:notice] = 'Post created!'

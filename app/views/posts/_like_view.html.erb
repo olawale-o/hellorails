@@ -2,7 +2,7 @@
   <% if post.likes.exists?(user_id: current_user.id) %>
     <b class= "liked">Liked by you</b>
   <% else %>
-    <%= form_with url: post_like_create_path(post.id) do |form| %>
+    <%= form_with url: post_likes_path(post.id) do |form| %>
       <%= form.submit "Like", class: "like btn" %>
     <% end %>
   <% end %>

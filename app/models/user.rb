@@ -38,7 +38,7 @@ class User < ApplicationRecord
   end
 
   # instance method to get top three posts for a given user
-  def top_three_posts
-    created_posts.order('created_at DESC').limit(3)
+  def top_three_posts(limit = 3)
+    created_posts.order(created_at: :desc).limit(limit)
   end
 end
