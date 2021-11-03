@@ -1,4 +1,6 @@
 # class User < ApplicationRecord
+# Include default devise modules. Others available are:
+# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 #   has_many :created_posts, class_name: 'Post', foreign_key: :author_id
 #   has_many :comments, foreign_key: :author_id, class_name: 'Comment'
 #   has_many :posts, through: :comments
@@ -7,6 +9,12 @@
 # end
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :lockable, :timeoutable, :trackable
+
   validates :name, presence: { message: 'Name must not be blank' }
   validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal: 0
 
