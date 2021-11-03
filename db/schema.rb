@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_055625) do
+ActiveRecord::Schema.define(version: 2021_11_02_115832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2021_10_26_055625) do
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "title", default: "title", null: false
-    t.text "text", default: "short text", null: false
+    t.string "title", null: false
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "comments_counter", default: 0, null: false
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 2021_10_26_055625) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "name", null: false
+    t.string "name", null: false
     t.string "photo", default: "https://i.pravatar.cc/150?img=2", null: false
-    t.text "bio", default: "short bio", null: false
+    t.text "bio", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "posts_counter", default: 0, null: false
+    t.integer "posts_counter", null: false
   end
 
   add_foreign_key "comments", "posts"
