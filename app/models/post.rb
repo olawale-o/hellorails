@@ -29,6 +29,8 @@ class Post < ApplicationRecord
   # get all posts and order by created_at
   scope :by_creation, ->(post_id) { where('id = ?', post_id).order('created_at DESC') }
 
+  before_validation :trim_text
+
   def self.update_post_counter(id)
     post = Post.find(id)
     user = post.user
@@ -48,6 +50,11 @@ class Post < ApplicationRecord
   # instance method to get top 5 comments for a given post
   def five_most_recent_comments(limit = 5)
     comments.order(created_at: :desc).limit(limit)
+  end
+
+  def trim_text
+    title.strip! if title.present?
+    text.strip! if text.present?
   end
 
   # auto update comments_counter for existing post

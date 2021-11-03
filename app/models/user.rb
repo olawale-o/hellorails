@@ -32,6 +32,8 @@ class User < ApplicationRecord
   # These gets all the recent psots of a user
   scope :top_three_posts_of_user, ->(id, total) { find(id).created_posts.order('created_at DESC').limit(total) }
 
+  before_validation :trim_text
+
   # class method to get top three posts a given user
   def self.top_three_posts(args)
     User.find_by(args).created_posts.order('created_at DESC').limit(3)
@@ -40,5 +42,9 @@ class User < ApplicationRecord
   # instance method to get top three posts for a given user
   def top_three_posts(limit = 3)
     created_posts.order(created_at: :desc).limit(limit)
+  end
+
+  def trim_text
+    name.strip! if name.present?
   end
 end
