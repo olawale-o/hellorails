@@ -1,5 +1,5 @@
 <div class="like__container">
-  <% if post.likes.exists?(user_id: current_user.id) %>
+  <% if post_liked_by?({ post: post, id: current_user.id }) %>
     <b class= "liked">Liked by you</b>
   <% else %>
     <%= form_with url: post_likes_path(post.id) do |form| %>
