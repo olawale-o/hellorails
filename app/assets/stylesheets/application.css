@@ -126,8 +126,8 @@ li {
 .form__header {
   font-size: 1.8rem;
   text-align: center;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
 }
 
 .field {
@@ -159,12 +159,6 @@ li {
   background: #3e43e8;
   color: #fff;
   padding: 0.5rem;
-}
-
-.form__header {
-  font-size: 1.8rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
 }
 
 .form__links {
