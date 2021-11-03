@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
-  validates :name, presence: { message: 'Name must not be blank' }
+  validates :name, presence: true
   validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal: 0
 
   # These gets only all the posts created by a specific user
