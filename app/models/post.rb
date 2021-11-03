@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   validates_numericality_of :likes_counter, only_integer: true, greater_than_or_equal: 0
 
   # these gets user that created a specific post
-  belongs_to :user
+  belongs_to :user, counter_cache: :posts_counter
   # these gets all the comments made on a specific post
   has_many :comments
   # these gets all the users that made comments on a specific post

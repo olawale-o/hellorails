@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, counter_cache: :likes_counter
 
   # class method to update likes counter for every time a post is liked on
   def self.update_post_likes_counter(like_id)
