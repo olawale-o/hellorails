@@ -7,6 +7,9 @@
 # end
 
 class User < ApplicationRecord
+  validates :name, presence: { message: 'Name must not be blank' }
+  validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal: 0
+
   # These gets only all the posts created by a specific user
   has_many :created_posts, class_name: 'Post'
   # these gets all the comments made by a specific user

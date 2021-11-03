@@ -7,6 +7,11 @@
 # end
 
 class Post < ApplicationRecord
+  validates :title, presence: { message: 'Title must not be blank' },
+                    length: { maximum: 250, too_long: 'Title must not exceed 250 characters' }
+  validates_numericality_of :comments_counter, only_integer: true, greater_than_or_equal: 0
+  validates_numericality_of :likes_counter, only_integer: true, greater_than_or_equal: 0
+
   # these gets user that created a specific post
   belongs_to :user
   # these gets all the comments made on a specific post
