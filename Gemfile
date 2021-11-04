@@ -38,7 +38,7 @@ group :development, :test do
 end
 
 group :development do
-  # use letter opener
+  # Use to preview mail in the browser
   gem 'letter_opener'
   gem 'listen', '~> 3.3'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
