@@ -19,13 +19,13 @@ class User < ApplicationRecord
   validates_numericality_of :posts_counter, only_integer: true, greater_than_or_equal: 0
 
   # These gets only all the posts created by a specific user
-  has_many :created_posts, class_name: 'Post'
+  has_many :created_posts, class_name: 'Post', dependent: :destroy
   # these gets all the comments made by a specific user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   # these gets all the posts created by a specifc user that has been commented on
   has_many :commented_posts, through: :comments, source: :user, class_name: 'Comment'
   # these gets all the likes of a specific user
-  has_many :likes, class_name: 'Like'
+  has_many :likes, class_name: 'Like', dependent: :destroy
   # these gets all the posts liked by a specifc user
   has_many :posts, through: :likes
 
