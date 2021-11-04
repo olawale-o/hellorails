@@ -188,3 +188,18 @@ li {
 .caution {
   font-size: 1.7rem;
 }
+
+.notices {
+  font-size: 1.8rem;
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.mailer {
+  font-size: 1.8rem;
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
+  background: green;
+}
