@@ -80,4 +80,12 @@ Rails.application.configure do
   # letter opener config
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  
+  # extra config for letter_opener 
+  LetterOpener.configure do |config|
+  
+    # To render only the message body, without any metadata or extra containers or styling.
+    # Default value is `:default` that renders styled message with showing useful metadata.
+    config.message_template = :light
+  end
 end
