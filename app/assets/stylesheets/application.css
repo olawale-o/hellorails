@@ -196,10 +196,18 @@ li {
   margin: 0 auto;
 }
 
-.mailer {
-  font-size: 1.8rem;
-  text-align: center;
-  max-width: 40rem;
-  margin: 0 auto;
-  background: green;
+.trash-btn {
+  background: #760724;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.box-icon {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.trash__container {
+  text-align: right;
 }
